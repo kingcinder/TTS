@@ -1,0 +1,12 @@
+pipeline:
+  text_path: "app/texts/demo.txt"
+  voice_refs:
+    - "app/refs/demo.wav"
+  device_order: "rocm,dml,cpu"
+  output_dir: "artifacts/outputs"
+  sample_rate: 48000
+  chunk_seconds: 20
+  crossfade_ms: 8
+logging:
+  directory: "artifacts/logs"
+  level: "INFO"

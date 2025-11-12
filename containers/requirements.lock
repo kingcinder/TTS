@@ -1,0 +1,7 @@
+numpy==1.26.4
+librosa==0.10.2.post1
+soundfile==0.12.1
+phonemizer==3.3.0
+pydub==0.25.1
+ffmpeg-normalize==1.27.7
+TTS==0.22.0
