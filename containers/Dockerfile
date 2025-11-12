@@ -22,7 +22,8 @@ RUN pip install --no-cache-dir --index-url ${TORCH_CPU_INDEX_URL} \
 
 COPY . /app
 
-RUN useradd --create-home appuser
+RUN useradd --create-home appuser && \
+    chown -R appuser:appuser /app
 USER appuser
 
 ENV TTS_LOG_FILE=/app/artifacts/logs/container-run.jsonl \
