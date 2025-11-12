@@ -10,6 +10,8 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends bash ffmpeg sox libsndfile1 && \
     rm -rf /var/lib/apt/lists/*
 
+RUN useradd --create-home --home-dir /home/appuser --uid 1000 appuser
+
 WORKDIR /app
 
 COPY containers/requirements.lock /tmp/requirements.lock
@@ -20,10 +22,7 @@ ARG TORCH_CPU_INDEX_URL=https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir --index-url ${TORCH_CPU_INDEX_URL} \
     torch==2.3.1 torchaudio==2.3.1 torchvision==0.18.1
 
-COPY . /app
-
-RUN useradd --create-home appuser && \
-    chown -R appuser:appuser /app
+COPY --chown=appuser:appuser . /app
 USER appuser
 
 ENV TTS_LOG_FILE=/app/artifacts/logs/container-run.jsonl \
