@@ -1,0 +1,15 @@
+env/
+.venv/
+__pycache__/
+*.pyc
+artifacts/
+runs/
+.git/
+.gitignore
+.vscode/
+.idea/
+app/refs/*.wav
+*.wav
+*.pth
+.env
+.env.local
